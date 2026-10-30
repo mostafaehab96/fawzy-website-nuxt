@@ -1,0 +1,76 @@
+/* ==========================================================================
+   Global Stylesheet (`assets/css/main.css`)
+   Loaded globally via `nuxt.config.ts`.
+   Contains:
+   1. CSS Reset & Smooth Scrolling
+   2. Custom Display Font (`fawzy` -> `/fonts/KoKhalaya-5-5.otf`)
+   3. Global CSS Variables
+   4. Shared Responsive `.container` Grid Widths
+   ========================================================================== */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'fawzy';
+  src: url('/fonts/KoKhalaya-5-5.otf') format('opentype');
+  font-display: swap;
+}
+
+:root {
+  --primary: #4361ee;
+  --secondary: #3f37c9;
+  --accent: #0618c4;
+  --brand-blue: #0c00b5;
+  --brand-sky: #c9e8ff;
+  --brand-light-blue: #94d1ff;
+  --dark: #2b2d42;
+  --light: #f8f9fa;
+  --text-muted: #636e72;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+body {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Shared page container widths across breakpoints */
+.container {
+  padding: 0 25px;
+  margin: 0 auto;
+}
+
+/* Desktop */
+@media screen and (min-width: 1440px) {
+  .container {
+    width: 1500px;
+  }
+}
+
+/* Laptop */
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+  .container {
+    width: 97%;
+  }
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    width: 99%;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .container {
+    width: 100%;
+  }
+}
