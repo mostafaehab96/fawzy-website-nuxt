@@ -191,15 +191,18 @@ onBeforeUnmount(() => {
 }
 
 .read-more::before {
-  content: '\f060';
-  font-family: 'Font Awesome 6 Free', 'Font Awesome 5 Free';
-  font-weight: 900;
+  content: '';
+  width: 17px;
+  height: 17px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   left: -25px;
-  color: #0c00b5;
-  transition: width 0.3s ease;
+  background-color: #0c00b5;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z'/%3E%3C/svg%3E")
+    no-repeat center / contain;
 }
 
 @media (max-width: 768px) {

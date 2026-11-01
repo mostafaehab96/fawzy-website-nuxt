@@ -207,20 +207,15 @@ onBeforeUnmount(() => {
 .card::before,
 .card_youtube::before {
   position: absolute;
-  content: '\f04b';
-  font-family: 'Font Awesome 6 Free', 'Font Awesome 5 Free';
-  font-weight: 900;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 25px;
+  content: '';
   left: 50%;
   top: 50%;
   width: 60px;
   height: 60px;
   transform: translate(-50%, -50%) scale(1);
-  color: #ffffff;
-  background-color: #0000009a;
+  background: #0000009a
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'%3E%3Cpath fill='%23ffffff' d='M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z'/%3E%3C/svg%3E")
+    no-repeat 54% center / 20px 25px;
   border-radius: 50%;
   overflow: hidden;
   z-index: 2;

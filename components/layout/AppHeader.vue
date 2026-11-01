@@ -169,7 +169,6 @@ onBeforeUnmount(() => {
                 @click="handleHashLinkClick('/videos', cat.hash)"
               >
                 {{ cat.dropdownLabel }}
-                <i :class="cat.icon"></i>
               </NuxtLink>
             </div>
           </li>
@@ -249,7 +248,6 @@ onBeforeUnmount(() => {
                   @click.stop="handleHashLinkClick('/videos', cat.hash)"
                 >
                   {{ cat.dropdownLabel }}
-                  <i :class="cat.icon"></i>
                 </NuxtLink>
               </div>
             </li>
@@ -292,7 +290,18 @@ onBeforeUnmount(() => {
         @click="toggleFloatingMenu"
       >
         <div class="bar-container">
-          <i class="fa-solid fa-caret-right arrow"></i>
+          <svg
+            class="arrow"
+            viewBox="0 0 256 512"
+            width="15"
+            height="30"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M246.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-9.2-9.2-22.9-11.9-34.9-6.9s-19.8 16.6-19.8 29.6l0 256c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l128-128z"
+            />
+          </svg>
         </div>
       </div>
 
@@ -464,25 +473,26 @@ onBeforeUnmount(() => {
 
 .a3maly_link .a3maly::after {
   position: absolute;
-  content: '\f0d7';
-  font-family: 'Font Awesome 6 Free', 'Font Awesome 5 Free';
-  font-weight: 900;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 21px;
+  content: '';
+  width: 13px;
+  height: 21px;
   left: 25px;
   top: 50%;
   transform: translateY(-50%);
-  color: #c9e8ff;
-  overflow: hidden;
-  transition: transform 0.3s ease;
+  background-color: #c9e8ff;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath d='M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath d='M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
   z-index: 1;
   pointer-events: none;
 }
 
 .a3maly_link .a3maly:hover::after {
-  color: #0c00b5;
+  background-color: #0c00b5;
   transform: translateY(-50%) rotate(-180deg);
 }
 
@@ -569,29 +579,30 @@ onBeforeUnmount(() => {
 
 .a3maly_link_mobile .a3maly_mobile::after {
   position: absolute;
-  content: '\f0d7';
-  font-family: 'Font Awesome 6 Free', 'Font Awesome 5 Free';
-  font-weight: 900;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 21px;
+  content: '';
+  width: 13px;
+  height: 21px;
   left: 25px;
   top: 50%;
   transform: translateY(-50%);
-  color: #c9e8ff;
-  overflow: hidden;
-  transition: transform 0.3s ease;
+  background-color: #c9e8ff;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath d='M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath d='M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
   z-index: 1;
   pointer-events: none;
 }
 
 .a3maly_link_mobile .a3maly_mobile:hover::after {
-  color: #0c00b5;
+  background-color: #0c00b5;
 }
 
 .a3maly_link_mobile .a3maly_mobile.active_a3maly_mobile::after {
-  color: #0c00b5;
+  background-color: #0c00b5;
   transform: translateY(-50%) rotate(-180deg);
 }
 

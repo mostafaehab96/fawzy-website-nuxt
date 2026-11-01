@@ -92,13 +92,15 @@ function handleEmailSubmit() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <i
-              :class="[
-                social.icon,
-                'social_link',
-                { rights_mark: social.rightsMark },
-              ]"
-            ></i>
+            <svg
+              :viewBox="social.viewBox"
+              height="30"
+              fill="currentColor"
+              aria-hidden="true"
+              :class="['social_link', { rights_mark: social.rightsMark }]"
+            >
+              <path :d="social.svgPath" />
+            </svg>
           </a>
         </div>
       </div>
@@ -299,10 +301,12 @@ function handleEmailSubmit() {
 }
 
 .social_link {
+  display: block;
+  width: auto;
+  height: 30px;
   color: #888888;
-  font-size: 30px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: color 0.3s;
 }
 
 .social_link:hover {
