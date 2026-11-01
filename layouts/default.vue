@@ -8,6 +8,21 @@
  */
 import { useAos } from '~/composables/useAos'
 
+const route = useRoute()
+const runtimeConfig = useRuntimeConfig()
+
+const canonicalUrl = computed(() => {
+  const base = runtimeConfig.public.siteUrl.replace(/\/+$/, '')
+  const cleanPath =
+    route.path === '/' ? '' : route.path.replace(/\/+$/, '')
+  return `${base}${cleanPath || '/'}`
+})
+
+useHead(() => ({
+  link: [{ rel: 'canonical', href: canonicalUrl.value }],
+  meta: [{ property: 'og:url', content: canonicalUrl.value }],
+}))
+
 // Initialize AOS (Animate On Scroll) across the layout
 useAos()
 </script>

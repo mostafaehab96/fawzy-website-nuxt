@@ -1,6 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+const siteUrl = (
+  process.env.NUXT_PUBLIC_SITE_URL || 'https://fawzy-website-nuxt.pages.dev'
+).replace(/\/+$/, '')
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-01-01',
+
+  runtimeConfig: {
+    public: {
+      siteUrl,
+    },
+  },
 
   // Disable the floating Nuxt DevTools badge at the bottom in `npm run dev`
   // (Set back to `true` anytime if you want to inspect Vue components/routes)
@@ -74,7 +84,10 @@ export default defineNuxtConfig({
           content:
             'محرر فيديو محترف بخبرة تزيد عن 5 سنوات في مجال إنتــــــــــــاج المحتــــــــوى المـــــــــــرئي والمــــونتاج و عمـــــلت مـــع العديد من المؤسسات الكبرى وصناع المحتوى في الوطن العربي والعالم',
         },
-        { property: 'og:image', content: '/images/meta_logo.jpg' },
+        { property: 'og:image', content: `${siteUrl}/images/meta_logo.jpg` },
+        { property: 'og:image:type', content: 'image/jpeg' },
+        { property: 'og:image:width', content: '1200' },
+        { property: 'og:image:height', content: '1200' },
         { property: 'og:type', content: 'website' },
         // Twitter Card Meta Tags
         { name: 'twitter:card', content: 'summary_large_image' },
@@ -84,7 +97,7 @@ export default defineNuxtConfig({
           content:
             'محرر فيديو محترف بخبرة تزيد عن 5 سنوات في مجال إنتــــــــــــاج المحتــــــــوى المـــــــــــرئي والمــــونتاج و عمـــــلت مـــع العديد من المؤسسات الكبرى وصناع المحتوى في الوطن العربي والعالم',
         },
-        { name: 'twitter:image', content: '/images/meta_logo.jpg' },
+        { name: 'twitter:image', content: `${siteUrl}/images/meta_logo.jpg` },
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/images/logo_svg.svg' },
