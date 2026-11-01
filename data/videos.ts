@@ -19,6 +19,8 @@ export interface FeaturedSliderVideo {
   vimeoId: string
   /** Short muted MP4 teaser loop stored in `public/videos_thum/` */
   teaserSrc: string
+  /** Static poster frame displayed before the MP4 teaser buffers */
+  poster: string
 }
 
 export interface VimeoPortfolioItem {
@@ -38,11 +40,11 @@ export interface LocalAiVideoItem {
 
 /** 1. Home page infinite slider videos */
 export const featuredSliderVideos: FeaturedSliderVideo[] = [
-  { vimeoId: '1109992558', teaserSrc: '/videos_thum/1.mp4' },
-  { vimeoId: '1109994127', teaserSrc: '/videos_thum/2.mp4' },
-  { vimeoId: '1110027422', teaserSrc: '/videos_thum/3.mp4' },
-  { vimeoId: '1109998370', teaserSrc: '/videos_thum/4.mp4' },
-  { vimeoId: '1110036742', teaserSrc: '/videos_thum/5.mp4' },
+  { vimeoId: '1109992558', teaserSrc: '/videos_thum/1.mp4', poster: '/images/Shorts/1.jpg' },
+  { vimeoId: '1109994127', teaserSrc: '/videos_thum/2.mp4', poster: '/images/Shorts/2.jpg' },
+  { vimeoId: '1110027422', teaserSrc: '/videos_thum/3.mp4', poster: '/images/Shorts/3.jpg' },
+  { vimeoId: '1109998370', teaserSrc: '/videos_thum/4.mp4', poster: '/images/Shorts/4.jpg' },
+  { vimeoId: '1110036742', teaserSrc: '/videos_thum/5.mp4', poster: '/images/Shorts/5.jpg' },
 ]
 
 /** 2. `/videos#Shorts` — Vertical 9:16 short-form videos */

@@ -6,31 +6,44 @@
  * in either vertical (`short`) or horizontal (`landscape`) frame sizes.
  */
 
-defineProps<{
+const props = defineProps<{
   videoSrc: string
   variant: 'short' | 'landscape'
 }>()
 
 const cardRef = ref<HTMLElement | null>(null)
 const videoRef = ref<HTMLVideoElement | null>(null)
+const activeSrc = ref<string | undefined>(undefined)
 let observer: IntersectionObserver | null = null
+let isIntersectingNow = false
 
-// Play heavy AI MP4 clips only when near the viewport so they don't compete
-// with smooth scrolling across Shorts / YouTube / Collage sections
-onMounted(() => {
+// Attach and play AI MP4 clips only when near the viewport so initial page
+// loads on `/videos` don't eagerly fetch offscreen video streams
+onMounted(async () => {
   if (!cardRef.value || !('IntersectionObserver' in window)) {
+    activeSrc.value = props.videoSrc
+    await nextTick()
     videoRef.value?.play().catch(() => {})
     return
   }
 
   observer = new IntersectionObserver(
-    (entries) => {
+    async (entries) => {
       const entry = entries[0]
-      if (!entry || !videoRef.value) return
+      if (!entry) return
+      isIntersectingNow = entry.isIntersecting
+
       if (entry.isIntersecting) {
-        videoRef.value.play().catch(() => {})
+        if (!activeSrc.value) {
+          activeSrc.value = props.videoSrc
+          await nextTick()
+          videoRef.value?.load()
+        }
+        if (isIntersectingNow) {
+          videoRef.value?.play().catch(() => {})
+        }
       } else {
-        videoRef.value.pause()
+        videoRef.value?.pause()
       }
     },
     { rootMargin: '400px 0px' }
@@ -56,11 +69,11 @@ onBeforeUnmount(() => {
     >
       <video
         ref="videoRef"
-        :src="videoSrc"
+        :src="activeSrc"
         muted
         loop
         playsinline
-        preload="metadata"
+        preload="none"
       ></video>
     </div>
   </div>

@@ -15,6 +15,7 @@ import { featuredSliderVideos, type FeaturedSliderVideo } from '~/data/videos'
 
 const sliderRootRef = ref<HTMLElement | null>(null)
 const isHovered = ref(false)
+const shouldLoadVideos = ref(false)
 const activeSlide = ref<FeaturedSliderVideo | null>(null)
 const activeTitle = ref('Vimeo Featured Video')
 
@@ -53,13 +54,12 @@ function handleKeydown(e: KeyboardEvent) {
   }
 }
 
-// Auto-play teaser MP4s only when visible inside the viewport
+// Lazily attach teaser MP4 sources near the viewport and auto-play visible slides
+let sectionObserver: IntersectionObserver | null = null
 let videoObserver: IntersectionObserver | null = null
 
-onMounted(() => {
-  window.addEventListener('keydown', handleKeydown)
-
-  if (!sliderRootRef.value) return
+function startVideoPlaybackObserver() {
+  if (!sliderRootRef.value || videoObserver) return
 
   videoObserver = new IntersectionObserver(
     (entries) => {
@@ -88,10 +88,38 @@ onMounted(() => {
       videoObserver?.observe(slideEl)
     }
   })
+}
+
+onMounted(async () => {
+  window.addEventListener('keydown', handleKeydown)
+
+  if (!sliderRootRef.value) return
+
+  if (!('IntersectionObserver' in window)) {
+    shouldLoadVideos.value = true
+    await nextTick()
+    startVideoPlaybackObserver()
+    return
+  }
+
+  sectionObserver = new IntersectionObserver(
+    async (entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        shouldLoadVideos.value = true
+        sectionObserver?.disconnect()
+        sectionObserver = null
+        await nextTick()
+        startVideoPlaybackObserver()
+      }
+    },
+    { rootMargin: '500px 0px' }
+  )
+  sectionObserver.observe(sliderRootRef.value)
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('keydown', handleKeydown)
+  sectionObserver?.disconnect()
   videoObserver?.disconnect()
 })
 </script>
@@ -151,7 +179,7 @@ onBeforeUnmount(() => {
           >
             <!-- Film-Reel Loading Spinner -->
             <div
-              v-if="!loadedVideos[slide.teaserSrc]"
+              v-if="shouldLoadVideos && !loadedVideos[slide.teaserSrc]"
               class="video_loader"
             >
               <span v-if="failedVideos[slide.teaserSrc]" class="loader-error">
@@ -169,16 +197,16 @@ onBeforeUnmount(() => {
             <video
               class="video_thumbnail_video_slider"
               :data-src="slide.teaserSrc"
+              :src="shouldLoadVideos ? slide.teaserSrc : undefined"
+              :poster="shouldLoadVideos ? slide.poster : undefined"
               loop
               muted
               playsinline
-              preload="auto"
+              preload="none"
               @loadeddata="markLoaded(slide.teaserSrc)"
               @canplaythrough="markLoaded(slide.teaserSrc)"
               @error="markFailed(slide.teaserSrc)"
-            >
-              <source :src="slide.teaserSrc" type="video/mp4" />
-            </video>
+            ></video>
           </div>
         </div>
       </div>
