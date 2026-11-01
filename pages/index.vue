@@ -9,6 +9,15 @@
 
 useHead({
   title: 'Fawzy',
+  link: [
+    {
+      rel: 'preload',
+      href: '/fonts/KoKhalaya-5-5.otf',
+      as: 'font',
+      type: 'font/otf',
+      crossorigin: 'anonymous',
+    },
+  ],
 })
 </script>
 

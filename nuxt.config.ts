@@ -116,12 +116,19 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/images/logo_svg.svg' },
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-        // Google Fonts: IBM Plex Sans Arabic + Montserrat
         {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap',
+          rel: 'preload',
+          href: '/fonts/ibm-plex-sans-arabic-600-arabic.woff2',
+          as: 'font',
+          type: 'font/woff2',
+          crossorigin: 'anonymous',
+        },
+        {
+          rel: 'preload',
+          href: '/fonts/ibm-plex-sans-arabic-700-arabic.woff2',
+          as: 'font',
+          type: 'font/woff2',
+          crossorigin: 'anonymous',
         },
       ],
     },
