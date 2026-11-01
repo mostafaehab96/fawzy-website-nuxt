@@ -1,0 +1,7 @@
+# Prevent search engines from indexing the default *.pages.dev staging subdomain
+# and preview branch deployments so only the canonical custom domain is indexed.
+https://fawzy-website-nuxt.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://*.fawzy-website-nuxt.pages.dev/*
+  X-Robots-Tag: noindex

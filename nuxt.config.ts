@@ -20,6 +20,36 @@ export default defineNuxtConfig({
     },
   },
 
+  routeRules: {
+    '/**': {
+      headers: {
+        'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
+        'X-Frame-Options': 'SAMEORIGIN',
+        'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+      },
+    },
+    '/fonts/**': {
+      headers: {
+        'Cache-Control': 'public, max-age=31536000, immutable',
+      },
+    },
+    '/images/**': {
+      headers: {
+        'Cache-Control': 'public, max-age=604800, stale-while-revalidate=86400',
+      },
+    },
+    '/videos_thum/**': {
+      headers: {
+        'Cache-Control': 'public, max-age=604800, stale-while-revalidate=86400',
+      },
+    },
+    '/AI_videos/**': {
+      headers: {
+        'Cache-Control': 'public, max-age=604800, stale-while-revalidate=86400',
+      },
+    },
+  },
+
   // Global <head> tags (SEO metadata, Google Fonts, FontAwesome icons, Vimeo & AOS scripts)
   // NOTE: Do NOT set `dir: 'rtl'` globally on htmlAttrs because individual CSS sections
   // explicitly opt into `direction: rtl` while infinite carousels rely on default LTR coordinates.

@@ -165,6 +165,24 @@ Open `http://localhost:3000` to view `/` (Home), `/videos`, and `/blog` with hot
   * **Build command:** `npm run generate` *(for 100% static prerendered HTML/assets)* or `npm run build` *(Cloudflare Pages preset)*
   * **Build output directory:** `dist`
 
+### Custom Domain Cutover & `301` Bulk Redirect (`*.pages.dev` -> Custom Domain)
+While staging on `fawzy-website-nuxt.pages.dev`, `public/_headers` automatically sends `X-Robots-Tag: noindex` ONLY on `*.pages.dev` hostnames, and `nuxt.config.ts` defaults `NUXT_PUBLIC_SITE_URL` to `https://fawzy-website-nuxt.pages.dev`.
+
+When your custom domain is live on Cloudflare:
+1. **Attach the Custom Domain:** In **Cloudflare Dashboard → Workers & Pages → `fawzy-website-nuxt` → Custom domains**, add your domain (e.g. `https://yourdomain.com`).
+2. **Set Canonical Site URL for Absolute Social Meta (`og:image`, `twitter:image`, `canonical`):** In **Workers & Pages → `fawzy-website-nuxt` → Settings → Variables and Secrets (Production)**, set:
+   ```text
+   NUXT_PUBLIC_SITE_URL=https://yourdomain.com
+   ```
+   Trigger a redeploy so prerendered `og:image`, `twitter:image`, `og:url`, and `<link rel="canonical">` tags point to your custom domain.
+3. **Enable the `301` Bulk Redirect from `fawzy-website-nuxt.pages.dev/*`:**
+   * **Option A (Automated CLI):**
+     ```bash
+     CF_ACCOUNT_ID="..." CF_API_TOKEN="..." CANONICAL_DOMAIN="https://yourdomain.com" \
+       bash scripts/setup-cloudflare-bulk-redirect.sh
+     ```
+   * **Option B (Cloudflare Dashboard UI):** Go to **Account Home → Bulk Redirects → Create Bulk Redirect List**, add Source URL `fawzy-website-nuxt.pages.dev/` → Target URL `https://yourdomain.com/` (`301`, check **Subpath matching**, **Preserve path suffix**, and **Preserve query string**), and deploy the Bulk Redirect Rule.
+
 ---
 
 ## 6. Promoting `nuxt-app/` to Root (Once Verified)
