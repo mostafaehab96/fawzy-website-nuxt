@@ -124,11 +124,6 @@ export default defineNuxtConfig({
         },
       ],
       script: [
-        // Vimeo Player JS SDK (controls play/pause/volume of embedded Vimeo iframes)
-        {
-          src: 'https://player.vimeo.com/api/player.js',
-          defer: true,
-        },
         // AOS (Animate On Scroll) library
         {
           src: 'https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js',

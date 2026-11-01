@@ -43,6 +43,33 @@ declare global {
 }
 
 const VIMEO_OEMBED_ENDPOINT = 'https://vimeo.com/api/oembed.json'
+const VIMEO_SDK_URL = 'https://player.vimeo.com/api/player.js'
+
+let vimeoSdkPromise: Promise<boolean> | null = null
+
+/**
+ * Dynamically loads the Vimeo Player JS SDK on first user interaction so
+ * initial page loads don't open an unused connection or set third-party cookies.
+ */
+function ensureVimeoSdkLoaded(): Promise<boolean> {
+  if (!import.meta.client) return Promise.resolve(false)
+  if (window.Vimeo?.Player) return Promise.resolve(true)
+  if (vimeoSdkPromise) return vimeoSdkPromise
+
+  vimeoSdkPromise = new Promise((resolve) => {
+    const script = document.createElement('script')
+    script.src = VIMEO_SDK_URL
+    script.async = true
+    script.onload = () => resolve(Boolean(window.Vimeo?.Player))
+    script.onerror = () => {
+      vimeoSdkPromise = null
+      resolve(false)
+    }
+    document.head.appendChild(script)
+  })
+
+  return vimeoSdkPromise
+}
 
 /**
  * Builds the Vimeo embed player URL for an `<iframe>`.
@@ -98,7 +125,9 @@ export async function fetchVimeoOembed(vimeoId: string): Promise<VimeoOembedResp
  * Awaits `player.ready()` so newly mounted click-to-load iframes initialize cleanly.
  */
 export async function playVimeoIframe(iframe: HTMLIFrameElement | null): Promise<boolean> {
-  if (!import.meta.client || !iframe || !window.Vimeo?.Player) return false
+  if (!import.meta.client || !iframe) return false
+  const sdkReady = await ensureVimeoSdkLoaded()
+  if (!sdkReady || !window.Vimeo?.Player) return false
   try {
     const player = new window.Vimeo.Player(iframe)
     if (typeof player.ready === 'function') {
