@@ -46,6 +46,7 @@ import { SITE_CONFIG } from '~/data/site'
             target="_blank"
             rel="noopener noreferrer"
           >
+            <span class="btn_gradient_bg" aria-hidden="true"></span>
             اطلب خدمتي المميزة الآن
           </a>
         </div>
@@ -278,20 +279,44 @@ import { SITE_CONFIG } from '~/data/site'
   position: absolute;
   right: 80px;
   bottom: 70px;
-  background: linear-gradient(120deg, #262d5c, #ae9712, #262d5c);
-  background-size: 200% 100%;
-  background-position: 100% 0;
-  transition: background-position 0.3s;
-  animation: gradientAnimation 1s infinite alternate;
+  isolation: isolate;
   z-index: 1;
 }
 
-@keyframes gradientAnimation {
+.otlb_khedmty .btn_gradient_bg {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.otlb_khedmty .btn_gradient_bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  background: linear-gradient(
+    120deg,
+    #262d5c,
+    #ae9712,
+    #262d5c,
+    #ae9712,
+    #262d5c
+  );
+  will-change: transform;
+  animation: gradientSlideGold 1s infinite alternate ease-in-out;
+}
+
+@keyframes gradientSlideGold {
   0% {
-    background-position: 0% 0%;
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    background-position: 100% 0%;
+    transform: translate3d(-50%, 0, 0);
   }
 }
 

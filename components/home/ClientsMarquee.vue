@@ -12,11 +12,35 @@
  * Edit logos or creator images in `data/clients.ts`.
  */
 import { companyLogos, creatorAvatars } from '~/data/clients'
+
+const marqueeRootRef = ref<HTMLElement | null>(null)
+const isVisible = ref(false)
+let observer: IntersectionObserver | null = null
+
+onMounted(() => {
+  if (!marqueeRootRef.value || !('IntersectionObserver' in window)) {
+    isVisible.value = true
+    return
+  }
+  observer = new IntersectionObserver(
+    (entries) => {
+      isVisible.value = entries.some((entry) => entry.isIntersecting)
+    },
+    { rootMargin: '250px 0px' }
+  )
+  observer.observe(marqueeRootRef.value)
+})
+
+onBeforeUnmount(() => {
+  observer?.disconnect()
+})
 </script>
 
 <template>
   <div
+    ref="marqueeRootRef"
     class="clients-marquee-root"
+    :class="{ 'marquee-paused': !isVisible }"
     :style="{
       '--total-slides_logos': companyLogos.length,
       '--total-slides_logos_left': creatorAvatars.length,
@@ -349,6 +373,11 @@ import { companyLogos, creatorAvatars } from '~/data/clients'
   min-width: var(--track-width);
   animation: scroll_logo var(--scroll-duration_logos) linear infinite;
   will-change: transform;
+}
+
+.marquee-paused .logos_carousel-track,
+.marquee-paused .logos_carousel-track_left {
+  animation-play-state: paused;
 }
 
 .logos_slide {

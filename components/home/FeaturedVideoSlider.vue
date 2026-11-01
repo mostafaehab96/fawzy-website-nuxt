@@ -15,6 +15,7 @@ import { featuredSliderVideos, type FeaturedSliderVideo } from '~/data/videos'
 
 const sliderRootRef = ref<HTMLElement | null>(null)
 const isHovered = ref(false)
+const isSliderInView = ref(false)
 const shouldLoadVideos = ref(false)
 const activeSlide = ref<FeaturedSliderVideo | null>(null)
 const activeTitle = ref('Vimeo Featured Video')
@@ -23,7 +24,9 @@ const activeTitle = ref('Vimeo Featured Video')
 const loadedVideos = reactive<Record<string, boolean>>({})
 const failedVideos = reactive<Record<string, boolean>>({})
 
-const isPaused = computed(() => isHovered.value || activeSlide.value !== null)
+const isPaused = computed(
+  () => !isSliderInView.value || isHovered.value || activeSlide.value !== null
+)
 
 function markLoaded(src: string) {
   loadedVideos[src] = true
@@ -96,6 +99,7 @@ onMounted(async () => {
   if (!sliderRootRef.value) return
 
   if (!('IntersectionObserver' in window)) {
+    isSliderInView.value = true
     shouldLoadVideos.value = true
     await nextTick()
     startVideoPlaybackObserver()
@@ -104,10 +108,10 @@ onMounted(async () => {
 
   sectionObserver = new IntersectionObserver(
     async (entries) => {
-      if (entries.some((entry) => entry.isIntersecting)) {
+      const visible = entries.some((entry) => entry.isIntersecting)
+      isSliderInView.value = visible
+      if (visible && !shouldLoadVideos.value) {
         shouldLoadVideos.value = true
-        sectionObserver?.disconnect()
-        sectionObserver = null
         await nextTick()
         startVideoPlaybackObserver()
       }
@@ -148,6 +152,7 @@ onBeforeUnmount(() => {
             alt=""
           />
           <NuxtLink class="more_shorts" to="/videos#Shorts">
+            <span class="btn_gradient_bg" aria-hidden="true"></span>
             شاهد المزيد من أعمالي
           </NuxtLink>
         </div>
@@ -319,19 +324,43 @@ onBeforeUnmount(() => {
   transform: translateX(-50%);
   white-space: nowrap;
   top: 240px;
-  background: linear-gradient(120deg, #262d5c, #443ac9, #262d5c);
-  background-size: 200% 100%;
-  background-position: 100% 0;
-  transition: background-position 0.3s;
-  animation: gradientAnimation 1s infinite alternate;
+  isolation: isolate;
 }
 
-@keyframes gradientAnimation {
+.more_shorts .btn_gradient_bg {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.more_shorts .btn_gradient_bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  background: linear-gradient(
+    120deg,
+    #262d5c,
+    #443ac9,
+    #262d5c,
+    #443ac9,
+    #262d5c
+  );
+  will-change: transform;
+  animation: gradientSlide 1s infinite alternate ease-in-out;
+}
+
+@keyframes gradientSlide {
   0% {
-    background-position: 0% 0%;
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    background-position: 100% 0%;
+    transform: translate3d(-50%, 0, 0);
   }
 }
 

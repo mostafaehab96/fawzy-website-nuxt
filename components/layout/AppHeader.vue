@@ -957,19 +957,37 @@ onBeforeUnmount(() => {
   align-items: center;
   cursor: pointer;
   border: 1px solid #0c00b52c;
-  background: linear-gradient(130deg, #ffffff, #a6a2e2, #ffffff);
-  background-size: 200% 100%;
-  background-position: 100% 0;
+  overflow: hidden;
+  isolation: isolate;
   transition: all 0.3s;
-  animation: gradientAnimation 1s infinite alternate;
 }
 
-@keyframes gradientAnimation {
+.float_circle:not(.active)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  background: linear-gradient(
+    130deg,
+    #ffffff,
+    #a6a2e2,
+    #ffffff,
+    #a6a2e2,
+    #ffffff
+  );
+  z-index: -1;
+  will-change: transform;
+  animation: floatGradientSlide 1s infinite alternate ease-in-out;
+}
+
+@keyframes floatGradientSlide {
   0% {
-    background-position: 0% 0%;
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    background-position: 100% 0%;
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
