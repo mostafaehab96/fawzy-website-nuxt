@@ -42,7 +42,7 @@ export const companyLogos: CompanyLogoItem[] = [
   },
   {
     className: 'gahezia_img',
-    src: '/images/company/gahezia.png',
+    src: '/images/company/gahezia.webp',
     alt: 'جاهزية المليار',
   },
   {
@@ -52,17 +52,17 @@ export const companyLogos: CompanyLogoItem[] = [
   },
   {
     className: 'qasem_img',
-    src: '/images/company/qasem.png',
+    src: '/images/company/qasem.webp',
     alt: 'جامعة القصيم',
   },
   {
     className: 'shorta_img',
-    src: '/images/company/shorta_sharqa.png',
+    src: '/images/company/shorta_sharqa.webp',
     alt: 'القيادة العامة لشرطة الشارقة',
   },
   {
     className: 'lifestyle_img',
-    src: '/images/company/Horizontal Logo.png',
+    src: '/images/company/horizontal_logo.webp',
     alt: 'Lifestyle',
   },
 ]
@@ -76,6 +76,6 @@ export const creatorAvatars: CreatorAvatarItem[] = [
   { src: '/images/creator/fas.jpg', alt: 'Fas' },
   { src: '/images/creator/feqy.jpg', alt: 'Feqy' },
   { src: '/images/creator/gel_yaqraa.jpg', alt: 'Gel Yaqraa' },
-  { src: '/images/creator/omar_abd_alrahem.jpg', alt: 'Omar Abd Alrahem' },
+  { src: '/images/creator/omar_abd_alrahem.webp', alt: 'Omar Abd Alrahem' },
   { src: '/images/creator/saleh.jpg', alt: 'Saleh' },
 ]

@@ -81,7 +81,9 @@ onBeforeUnmount(() => {
       class="right_star_rocket"
       data-aos="fade-up"
       data-aos-offset="1"
-      src="/images/right_star_rocket.svg"
+      src="/images/rocket.webp"
+      width="380"
+      height="337"
       alt=""
     />
     <img class="left_star" src="/images/left_star_1.svg" alt="" />
@@ -89,7 +91,9 @@ onBeforeUnmount(() => {
       class="left_star_rocket"
       data-aos="fade-up"
       data-aos-offset="1"
-      src="/images/left_star_rocket.svg"
+      src="/images/rocket.webp"
+      width="380"
+      height="337"
       alt=""
     />
 
@@ -159,6 +163,7 @@ onBeforeUnmount(() => {
   bottom: 50px;
   width: 380px;
   height: 337px;
+  scale: -1 1;
 }
 
 .views_count {

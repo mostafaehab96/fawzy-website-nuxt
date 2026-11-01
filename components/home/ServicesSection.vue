@@ -24,7 +24,9 @@ import { SITE_CONFIG } from '~/data/site'
           <div class="mic_head_box">
             <img
               class="mic_img"
-              src="/images/Mic_Headphone_Smartphone .svg"
+              src="/images/mic_podcast.webp"
+              width="291"
+              height="224"
               alt="Podcast Editing"
             />
             <p class="mic_text">
@@ -55,7 +57,9 @@ import { SITE_CONFIG } from '~/data/site'
           <div class="right_big_box" data-aos="zoom-in" data-aos-offset="1">
             <img
               class="whiteboard_img"
-              src="/images/whiteboard.svg"
+              src="/images/whiteboard.webp"
+              width="424"
+              height="466"
               alt="Whiteboard Animation"
             />
             <p class="Whiteboard_text">
@@ -66,7 +70,13 @@ import { SITE_CONFIG } from '~/data/site'
 
           <div class="left_two_boxes">
             <div class="first_box" data-aos="fade-up" data-aos-offset="1">
-              <img class="play" src="/images/play.svg" alt="" />
+              <img
+                class="play"
+                src="/images/play_3d.webp"
+                width="456"
+                height="326"
+                alt=""
+              />
               <p class="Collage">
                 Collage <br />
                 Art Animation
@@ -76,12 +86,16 @@ import { SITE_CONFIG } from '~/data/site'
             <div class="second_box" data-aos="fade-up" data-aos-offset="1">
               <img
                 class="clacket_light"
-                src="/images/clacket_light.svg"
+                src="/images/clacket.webp"
+                width="336"
+                height="336"
                 alt=""
               />
               <img
                 class="clacket_solid"
-                src="/images/clacket_solid.svg"
+                src="/images/clacket.webp"
+                width="336"
+                height="336"
                 alt=""
               />
               <p class="clacket_text">
@@ -605,6 +619,7 @@ import { SITE_CONFIG } from '~/data/site'
   z-index: 0;
   right: -95px;
   top: -78px;
+  opacity: 0.61;
 }
 
 .clacket_solid {

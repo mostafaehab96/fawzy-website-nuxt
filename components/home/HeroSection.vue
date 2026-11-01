@@ -4,7 +4,7 @@
  * -----------------------------------------------------
  * Top banner on `/`:
  *   - Right side (RTL): "شريكك الإبداعي" display headline, bio text, WhatsApp CTA
- *   - Left side: Portrait (`/images/fawzy.png`), "+100 M" badges, decorative grid
+ *   - Left side: Portrait (`/images/fawzy.webp`), "+100 M" badges, decorative grid
  */
 import { SITE_CONFIG } from '~/data/site'
 </script>
@@ -35,7 +35,9 @@ import { SITE_CONFIG } from '~/data/site'
             <div class="span_rocket_box">
               <img
                 class="span_rocket_image"
-                src="/images/first_head_rocket.svg"
+                src="/images/first_head_rocket.webp"
+                width="295"
+                height="270"
                 alt=""
               />
             </div>
@@ -62,7 +64,13 @@ import { SITE_CONFIG } from '~/data/site'
 
         <!-- Portrait & Decorative Graphic Elements -->
         <div class="image_box" data-aos="fade-down" data-aos-offset="1">
-          <img class="fawzy_img" src="/images/fawzy.png" alt="محمود فوزي" />
+          <img
+            class="fawzy_img"
+            src="/images/fawzy.webp"
+            width="372"
+            height="521"
+            alt="محمود فوزي"
+          />
           <div class="circle"></div>
           <img class="big_right_arrow" src="/images/big_arrow.svg" alt="" />
           <img class="small_right_arrow" src="/images/small_arrow.svg" alt="" />
