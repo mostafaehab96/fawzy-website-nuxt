@@ -22,22 +22,22 @@ export interface CreatorAvatarItem {
 export const companyLogos: CompanyLogoItem[] = [
   {
     className: 'akhdar_img',
-    src: '/images/company/akhdar.png',
+    src: '/images/company/akhdar.webp',
     alt: 'أخضر',
   },
   {
     className: 'ethad_img',
-    src: '/images/company/ethad_s3ody.png',
+    src: '/images/company/ethad_s3ody.webp',
     alt: 'الاتحاد الرياضي السعودي للجامعات',
   },
   {
     className: 'KimCam_img',
-    src: '/images/company/KimCam.png',
+    src: '/images/company/KimCam.webp',
     alt: 'KimCam Academy',
   },
   {
     className: 'Soor_img',
-    src: '/images/company/Soor.png',
+    src: '/images/company/Soor.webp',
     alt: 'Soor',
   },
   {
@@ -47,7 +47,7 @@ export const companyLogos: CompanyLogoItem[] = [
   },
   {
     className: 'had_img',
-    src: '/images/company/had.png',
+    src: '/images/company/had.webp',
     alt: 'هاد للدعوة والإرشاد',
   },
   {
@@ -69,13 +69,13 @@ export const companyLogos: CompanyLogoItem[] = [
 
 /** Row 2: Content Creators (scrolls left-to-right in circular frames) */
 export const creatorAvatars: CreatorAvatarItem[] = [
-  { src: '/images/creator/abd_alrahman.jpg', alt: 'Abd Alrahman' },
-  { src: '/images/creator/abo_bakr.jpg', alt: 'Abo Bakr' },
-  { src: '/images/creator/al_ghafes.jpg', alt: 'Al Ghafes' },
-  { src: '/images/creator/ayman.jpg', alt: 'Ayman' },
-  { src: '/images/creator/fas.jpg', alt: 'Fas' },
-  { src: '/images/creator/feqy.jpg', alt: 'Feqy' },
-  { src: '/images/creator/gel_yaqraa.jpg', alt: 'Gel Yaqraa' },
+  { src: '/images/creator/abd_alrahman.webp', alt: 'Abd Alrahman' },
+  { src: '/images/creator/abo_bakr.webp', alt: 'Abo Bakr' },
+  { src: '/images/creator/al_ghafes.webp', alt: 'Al Ghafes' },
+  { src: '/images/creator/ayman.webp', alt: 'Ayman' },
+  { src: '/images/creator/fas.webp', alt: 'Fas' },
+  { src: '/images/creator/feqy.webp', alt: 'Feqy' },
+  { src: '/images/creator/gel_yaqraa.webp', alt: 'Gel Yaqraa' },
   { src: '/images/creator/omar_abd_alrahem.webp', alt: 'Omar Abd Alrahem' },
-  { src: '/images/creator/saleh.jpg', alt: 'Saleh' },
+  { src: '/images/creator/saleh.webp', alt: 'Saleh' },
 ]

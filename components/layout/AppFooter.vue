@@ -58,7 +58,7 @@ function handleEmailSubmit() {
 
           <!-- Column 3: Email Registration -->
           <form class="email_register flex_view" @submit.prevent="handleEmailSubmit">
-            <h4 class="register_head">سجل الآن</h4>
+            <h3 class="register_head">سجل الآن</h3>
             <div class="register_input_container">
               <input
                 id="blink_cursor_email_register"

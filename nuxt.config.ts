@@ -19,18 +19,15 @@ export default defineNuxtConfig({
   // Global stylesheet loaded on every page (fonts, CSS reset, .container layout)
   css: ['~/assets/css/main.css'],
 
-  // Nuxt's `features.inlineStyles` (enabled by default) already inlines `main.css`
-  // and every rendered component's `<style>` block into the prerendered HTML.
-  // Clear residual `css` entries on the entry & shared chunks in the SSR manifest
-  // so Nuxt does not emit duplicate render-blocking `<link rel="stylesheet">` tags,
-  // while keeping Vite's per-route CSS chunks intact for client-side SPA navigation.
-  hooks: {
-    'build:manifest'(manifest) {
-      for (const entry of Object.values(manifest)) {
-        if (entry.resourceType === 'script' && entry.css) {
-          entry.css = []
-        }
-      }
+  // Serve a single immutable cached `/_nuxt/style.<hash>.css` (`~11 KB` Brotli)
+  // rather than duplicating 87 KB of inline `<style>` tags in every HTML file AND
+  // triggering Vite's post-hydration `<link rel="stylesheet">` re-fetch.
+  features: {
+    inlineStyles: false,
+  },
+  vite: {
+    build: {
+      cssCodeSplit: false,
     },
   },
 
