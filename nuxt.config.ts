@@ -108,18 +108,6 @@ export default defineNuxtConfig({
           rel: 'stylesheet',
           href: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap',
         },
-        // AOS (Animate On Scroll) stylesheet
-        {
-          rel: 'stylesheet',
-          href: 'https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css',
-        },
-      ],
-      script: [
-        // AOS (Animate On Scroll) library
-        {
-          src: 'https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js',
-          defer: true,
-        },
       ],
     },
   },

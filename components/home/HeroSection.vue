@@ -14,7 +14,7 @@ import { SITE_CONFIG } from '~/data/site'
     <div class="container">
       <div class="headline_and_image_box">
         <!-- Headline, Bio & CTA -->
-        <div class="head_box" data-aos="fade-up" data-aos-offset="1">
+        <div class="head_box">
           <h1 class="first_head">
             شريكك <br />
           </h1>
@@ -71,7 +71,7 @@ import { SITE_CONFIG } from '~/data/site'
         </div>
 
         <!-- Portrait & Decorative Graphic Elements -->
-        <div class="image_box" data-aos="fade-down" data-aos-offset="1">
+        <div class="image_box">
           <img
             class="fawzy_img"
             src="/images/fawzy.webp"

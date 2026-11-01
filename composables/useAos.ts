@@ -1,56 +1,67 @@
 /**
- * Animate On Scroll Composable (`composables/useAos.ts`)
- * ------------------------------------------------------
- * Initializes and refreshes the AOS (Animate On Scroll) library cleanly
- * inside Vue's `onMounted` / `onBeforeUnmount` lifecycle hooks.
+ * Native Scroll-Reveal Composable (`composables/useAos.ts`)
+ * ---------------------------------------------------------
+ * Lightweight zero-dependency replacement for external `aos.css` + `aos.js`.
+ * Uses a single browser `IntersectionObserver` to toggle `.aos-animate` on
+ * `[data-aos]` elements without render-blocking CDN stylesheets or polling.
  */
-
-declare global {
-  interface Window {
-    AOS?: {
-      init: (options?: { duration?: number; once?: boolean }) => void
-      refresh: () => void
-    }
-  }
-}
 
 export function useAos() {
   const route = useRoute()
+  let observer: IntersectionObserver | null = null
 
-  // Refresh AOS element offsets only when navigating to a new page
-  // (Never call `AOS.refresh()` on every `scroll` event — AOS already manages its
-  // own scroll listener, and refreshing on scroll causes 60fps layout thrashing!)
+  function observeElements() {
+    if (!import.meta.client) return
+    observer?.disconnect()
+
+    const elements = document.querySelectorAll<HTMLElement>('[data-aos]')
+    if (!elements.length) return
+
+    if (!('IntersectionObserver' in window)) {
+      elements.forEach((el) => el.classList.add('aos-animate'))
+      return
+    }
+
+    // Pre-mark elements already in or above the viewport before enabling CSS hiding
+    const viewportHeight = window.innerHeight
+    elements.forEach((el) => {
+      if (el.getBoundingClientRect().top < viewportHeight * 0.98) {
+        el.classList.add('aos-animate')
+      }
+    })
+
+    document.documentElement.classList.add('aos-ready')
+
+    observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('aos-animate')
+          } else if (entry.boundingClientRect.top > 0) {
+            // Reset only when the element falls back below the viewport (matches AOS `once: false, mirror: false`)
+            entry.target.classList.remove('aos-animate')
+          }
+        }
+      },
+      { rootMargin: '0px 0px -2% 0px', threshold: 0.01 }
+    )
+
+    elements.forEach((el) => observer?.observe(el))
+  }
+
   watch(
     () => route.path,
-    () => {
-      if (import.meta.client) {
-        requestAnimationFrame(() => {
-          window.AOS?.refresh()
-        })
-      }
+    async () => {
+      await nextTick()
+      observeElements()
     }
   )
 
   onMounted(() => {
-    // Initialize immediately if AOS script has loaded, or wait briefly for defer script
-    const initAos = () => {
-      if (window.AOS) {
-        window.AOS.init({
-          duration: 1200,
-          once: false,
-        })
-        return true
-      }
-      return false
-    }
+    observeElements()
+  })
 
-    if (!initAos()) {
-      const checkTimer = window.setInterval(() => {
-        if (initAos()) {
-          window.clearInterval(checkTimer)
-        }
-      }, 100)
-      window.setTimeout(() => window.clearInterval(checkTimer), 3000)
-    }
+  onBeforeUnmount(() => {
+    observer?.disconnect()
   })
 }
