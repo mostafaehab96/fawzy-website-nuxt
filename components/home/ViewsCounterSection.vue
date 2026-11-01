@@ -73,10 +73,42 @@ onBeforeUnmount(() => {
 
 <template>
   <section class="views_number_section">
-    <img class="wave" src="/images/wave.svg" alt="" />
-    <img class="wave_2" src="/images/wave.svg" alt="" />
-    <img class="wave_3" src="/images/wave.svg" alt="" />
-    <img class="right_star" src="/images/right_star_1.svg" alt="" />
+    <img
+      class="wave"
+      src="/images/wave.svg"
+      width="1080"
+      height="149"
+      loading="lazy"
+      decoding="async"
+      alt=""
+    />
+    <img
+      class="wave_2"
+      src="/images/wave.svg"
+      width="1080"
+      height="149"
+      loading="lazy"
+      decoding="async"
+      alt=""
+    />
+    <img
+      class="wave_3"
+      src="/images/wave.svg"
+      width="1080"
+      height="149"
+      loading="lazy"
+      decoding="async"
+      alt=""
+    />
+    <img
+      class="right_star"
+      src="/images/right_star_1.svg"
+      width="401"
+      height="487"
+      loading="lazy"
+      decoding="async"
+      alt=""
+    />
     <img
       class="right_star_rocket"
       data-aos="fade-up"
@@ -84,9 +116,19 @@ onBeforeUnmount(() => {
       src="/images/rocket.webp"
       width="380"
       height="337"
+      loading="lazy"
+      decoding="async"
       alt=""
     />
-    <img class="left_star" src="/images/left_star_1.svg" alt="" />
+    <img
+      class="left_star"
+      src="/images/left_star_1.svg"
+      width="401"
+      height="487"
+      loading="lazy"
+      decoding="async"
+      alt=""
+    />
     <img
       class="left_star_rocket"
       data-aos="fade-up"
@@ -94,6 +136,8 @@ onBeforeUnmount(() => {
       src="/images/rocket.webp"
       width="380"
       height="337"
+      loading="lazy"
+      decoding="async"
       alt=""
     />
 
@@ -125,12 +169,14 @@ onBeforeUnmount(() => {
 
 .wave_2 {
   width: 100%;
+  height: auto;
   position: absolute;
   bottom: 0;
 }
 
 .wave_3 {
   width: 100%;
+  height: auto;
   position: absolute;
   top: 65px;
 }

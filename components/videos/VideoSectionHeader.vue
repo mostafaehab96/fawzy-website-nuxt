@@ -18,7 +18,14 @@ defineProps<{
 <template>
   <div class="content-header" :class="{ content_header_first: isFirst }">
     <div class="image_box">
-      <img src="/images/a3maly_bg_shape.svg" alt="" />
+      <img
+        src="/images/a3maly_bg_shape.svg"
+        width="560"
+        height="146"
+        :loading="isFirst ? 'eager' : 'lazy'"
+        decoding="async"
+        alt=""
+      />
     </div>
     <h2>{{ title }}</h2>
     <p>
@@ -52,6 +59,7 @@ defineProps<{
 
 .image_box img {
   width: 450px;
+  height: auto;
 }
 
 .content-header h2 {

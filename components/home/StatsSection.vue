@@ -24,6 +24,10 @@
           <img
             class="glowing_star"
             src="/images/Glowing Star.svg"
+            width="220"
+            height="220"
+            loading="lazy"
+            decoding="async"
             alt=""
           />
         </div>

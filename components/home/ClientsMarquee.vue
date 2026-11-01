@@ -29,13 +29,25 @@ import { companyLogos, creatorAvatars } from '~/data/clients'
           <h2 class="omlaay_head">أبـــرز عمـــــــلائي</h2>
           <h3 class="omlaay_sub_head">
             <span class="emoj_hand">
-              <img class="emoj_hand_img" src="/images/emoj_hand.svg" alt="" />
+              <img
+                class="emoj_hand_img"
+                src="/images/emoj_hand.svg"
+                width="49"
+                height="50"
+                loading="lazy"
+                decoding="async"
+                alt=""
+              />
             </span>
             المؤسســات وصناع المحتوى
           </h3>
           <img
             class="omlaay_shape"
             src="/images/a3maly_bg_shape.svg"
+            width="560"
+            height="146"
+            loading="lazy"
+            decoding="async"
             alt=""
           />
         </div>
@@ -69,7 +81,10 @@ import { companyLogos, creatorAvatars } from '~/data/clients'
               :class="['logos_img_comp', logo.className]"
               :src="logo.src"
               :alt="logo.alt"
+              width="300"
+              height="150"
               loading="lazy"
+              decoding="async"
             />
           </div>
         </div>
@@ -99,7 +114,10 @@ import { companyLogos, creatorAvatars } from '~/data/clients'
                 class="logos_img"
                 :src="creator.src"
                 :alt="creator.alt"
+                width="200"
+                height="200"
                 loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -180,6 +198,7 @@ import { companyLogos, creatorAvatars } from '~/data/clients'
   position: absolute;
   z-index: -1;
   width: 630px;
+  height: auto;
   top: 45px;
   right: 50%;
   transform: translateX(50%);

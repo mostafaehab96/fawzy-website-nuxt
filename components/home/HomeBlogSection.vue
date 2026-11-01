@@ -22,12 +22,20 @@ const featuredPosts = computed(() =>
           <img
             class="modaona_shape"
             src="/images/modaona_shape.svg"
+            width="221"
+            height="145"
+            loading="lazy"
+            decoding="async"
             alt=""
           />
           <span class="modaona_pen">
             <img
               class="modaona_pen_img"
               src="/images/modaona_pen.svg"
+              width="107"
+              height="107"
+              loading="lazy"
+              decoding="async"
               alt=""
             />
           </span>
@@ -80,6 +88,7 @@ const featuredPosts = computed(() =>
   position: absolute;
   z-index: -1;
   width: 230px;
+  height: auto;
   top: -32px;
   right: 50%;
   transform: translateX(50%);

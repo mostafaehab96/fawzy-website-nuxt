@@ -23,12 +23,18 @@ import { SITE_CONFIG } from '~/data/site'
             <img
               class="ract_ibda3y_image"
               src="/images/Rectangle_ibda3y.svg"
+              width="399"
+              height="149"
+              decoding="async"
               alt=""
             />
             <div class="ract_ibda3y_frame">
               <img
                 class="ract_ibda3y_frame_image"
                 src="/images/Ract_ibd3ay_frame.svg"
+                width="404"
+                height="150"
+                decoding="async"
                 alt=""
               />
             </div>
@@ -38,6 +44,8 @@ import { SITE_CONFIG } from '~/data/site'
                 src="/images/first_head_rocket.webp"
                 width="295"
                 height="270"
+                fetchpriority="high"
+                decoding="async"
                 alt=""
               />
             </div>
@@ -69,14 +77,33 @@ import { SITE_CONFIG } from '~/data/site'
             src="/images/fawzy.webp"
             width="372"
             height="521"
+            fetchpriority="high"
+            decoding="async"
             alt="محمود فوزي"
           />
           <div class="circle"></div>
-          <img class="big_right_arrow" src="/images/big_arrow.svg" alt="" />
-          <img class="small_right_arrow" src="/images/small_arrow.svg" alt="" />
+          <img
+            class="big_right_arrow"
+            src="/images/big_arrow.svg"
+            width="37"
+            height="54"
+            decoding="async"
+            alt=""
+          />
+          <img
+            class="small_right_arrow"
+            src="/images/small_arrow.svg"
+            width="29"
+            height="37"
+            decoding="async"
+            alt=""
+          />
           <img
             class="recta_with_name"
             src="/images/first_left_rect.svg"
+            width="434"
+            height="107"
+            decoding="async"
             alt=""
           />
           <h2 class="fawzy_name">محمــــــود فــــــوزي</h2>
@@ -145,6 +172,7 @@ import { SITE_CONFIG } from '~/data/site'
 }
 
 .ract_ibda3y_image {
+  width: auto;
   height: 200px;
 }
 
@@ -169,6 +197,7 @@ import { SITE_CONFIG } from '~/data/site'
 }
 
 .ract_ibda3y_frame_image {
+  width: auto;
   height: 97%;
 }
 

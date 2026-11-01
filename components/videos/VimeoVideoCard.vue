@@ -24,6 +24,7 @@ const props = defineProps<{
   title?: string
   variant: 'short' | 'landscape'
   isPlaying: boolean
+  priority?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -143,6 +144,10 @@ onBeforeUnmount(() => {
           ]"
           :src="resolvedThumbnail"
           :alt="resolvedTitle"
+          :width="variant === 'short' ? 300 : 517"
+          :height="variant === 'short' ? 517 : 300"
+          :loading="priority ? 'eager' : 'lazy'"
+          :fetchpriority="priority ? 'high' : undefined"
           decoding="async"
           @click="handleThumbnailClick"
         />

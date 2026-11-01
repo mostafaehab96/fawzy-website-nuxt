@@ -14,6 +14,7 @@ import type { BlogPostItem } from '~/data/blogs'
 
 const props = defineProps<{
   post: BlogPostItem
+  priority?: boolean
 }>()
 
 const showComingSoonModal = ref(false)
@@ -46,7 +47,15 @@ onBeforeUnmount(() => {
 <template>
   <article class="blog-card">
     <div class="card-image">
-      <img :src="post.image" :alt="post.imageAlt" loading="lazy" />
+      <img
+        :src="post.image"
+        :alt="post.imageAlt"
+        width="720"
+        height="480"
+        :loading="priority ? 'eager' : 'lazy'"
+        :fetchpriority="priority ? 'high' : undefined"
+        decoding="async"
+      />
     </div>
 
     <div class="card-content">

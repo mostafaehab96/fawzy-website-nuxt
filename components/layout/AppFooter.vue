@@ -29,7 +29,15 @@ function handleEmailSubmit() {
         <div class="main_footer_box">
           <!-- Column 1: Logo & Bio -->
           <div class="logo_text flex_view">
-            <img class="logo_footer" src="/images/footer_logo.svg" alt="Fawzy" />
+            <img
+              class="logo_footer"
+              src="/images/footer_logo.svg"
+              width="174"
+              height="123"
+              loading="lazy"
+              decoding="async"
+              alt="Fawzy"
+            />
             <p class="logo_paragraph">
               {{ SITE_CONFIG.footerBio }}
             </p>

@@ -27,6 +27,8 @@ import { SITE_CONFIG } from '~/data/site'
               src="/images/mic_podcast.webp"
               width="291"
               height="224"
+              loading="lazy"
+              decoding="async"
               alt="Podcast Editing"
             />
             <p class="mic_text">
@@ -60,6 +62,8 @@ import { SITE_CONFIG } from '~/data/site'
               src="/images/whiteboard.webp"
               width="424"
               height="466"
+              loading="lazy"
+              decoding="async"
               alt="Whiteboard Animation"
             />
             <p class="Whiteboard_text">
@@ -75,6 +79,8 @@ import { SITE_CONFIG } from '~/data/site'
                 src="/images/play_3d.webp"
                 width="456"
                 height="326"
+                loading="lazy"
+                decoding="async"
                 alt=""
               />
               <p class="Collage">
@@ -89,6 +95,8 @@ import { SITE_CONFIG } from '~/data/site'
                 src="/images/clacket.webp"
                 width="336"
                 height="336"
+                loading="lazy"
+                decoding="async"
                 alt=""
               />
               <img
@@ -96,6 +104,8 @@ import { SITE_CONFIG } from '~/data/site'
                 src="/images/clacket.webp"
                 width="336"
                 height="336"
+                loading="lazy"
+                decoding="async"
                 alt=""
               />
               <p class="clacket_text">
@@ -122,6 +132,10 @@ import { SITE_CONFIG } from '~/data/site'
             <img
               class="contact_tringle"
               src="/images/contact_tringle.svg"
+              width="64"
+              height="76"
+              loading="lazy"
+              decoding="async"
               alt=""
             />
           </a>
@@ -136,6 +150,10 @@ import { SITE_CONFIG } from '~/data/site'
             <img
               class="youtube_tringle"
               src="/images/youtube_tringe.svg"
+              width="64"
+              height="76"
+              loading="lazy"
+              decoding="async"
               alt=""
             />
           </a>

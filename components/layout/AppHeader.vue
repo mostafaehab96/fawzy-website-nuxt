@@ -115,7 +115,13 @@ onBeforeUnmount(() => {
       <!-- Brand Logo -->
       <div class="logo_header">
         <NuxtLink to="/" aria-label="Home">
-          <img class="logo_img" src="/images/logo_svg.svg" alt="Fawzy Logo" />
+          <img
+            class="logo_img"
+            src="/images/logo_svg.svg"
+            width="87"
+            height="60"
+            alt="Fawzy Logo"
+          />
         </NuxtLink>
       </div>
 
@@ -132,7 +138,13 @@ onBeforeUnmount(() => {
               rel="noopener noreferrer"
             >
               قناة اليوتيوب
-              <img class="play_header" src="/images/play_red.svg" alt="" />
+              <img
+                class="play_header"
+                src="/images/play_red.svg"
+                width="40"
+                height="48"
+                alt=""
+              />
             </a>
           </li>
 

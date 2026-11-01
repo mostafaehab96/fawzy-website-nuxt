@@ -141,6 +141,10 @@ onBeforeUnmount(() => {
           <img
             class="a3maly_shape"
             src="/images/a3maly_bg_shape.svg"
+            width="560"
+            height="146"
+            loading="lazy"
+            decoding="async"
             alt=""
           />
           <NuxtLink class="more_shorts" to="/videos#Shorts">
@@ -295,6 +299,7 @@ onBeforeUnmount(() => {
   position: absolute;
   z-index: -1;
   width: 630px;
+  height: auto;
   top: 37px;
   right: 50%;
   transform: translateX(50%);

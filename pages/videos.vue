@@ -59,12 +59,13 @@ onBeforeUnmount(() => {
 
       <div class="cards-container">
         <VideosVimeoVideoCard
-          v-for="item in shortsVideos"
+          v-for="(item, index) in shortsVideos"
           :key="`short-${item.vimeoId}`"
           :vimeo-id="item.vimeoId"
           :thumbnail="item.thumbnail"
           :title="item.title"
           variant="short"
+          :priority="index < 4"
           :is-playing="activeCardKey === `short-${item.vimeoId}`"
           @play="handleCardPlay(`short-${item.vimeoId}`)"
         />

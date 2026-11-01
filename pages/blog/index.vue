@@ -18,9 +18,10 @@ useHead({
     <div class="container">
       <div class="blog-grid">
         <BlogCard
-          v-for="post in blogPosts"
+          v-for="(post, index) in blogPosts"
           :key="post.id"
           :post="post"
+          :priority="index < 2"
         />
       </div>
     </div>
