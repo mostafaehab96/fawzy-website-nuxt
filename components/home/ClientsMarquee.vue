@@ -49,7 +49,11 @@ import { companyLogos, creatorAvatars } from '~/data/clients'
 
     <!-- Row 1: Company Logos Marquee -->
     <div class="all_omlaa_logos_box">
-      <div class="logos_carousel" aria-live="polite" aria-label="Company Logos">
+      <div
+        class="logos_carousel"
+        role="region"
+        aria-label="Company Logos"
+      >
         <div
           v-for="trackIndex in [1, 2]"
           :key="`comp-track-${trackIndex}`"
@@ -76,7 +80,7 @@ import { companyLogos, creatorAvatars } from '~/data/clients'
     <div class="all_omlaa_logos_box_left">
       <div
         class="logos_carousel_left"
-        aria-live="polite"
+        role="region"
         aria-label="Content Creators"
       >
         <div

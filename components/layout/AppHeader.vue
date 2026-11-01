@@ -206,23 +206,25 @@ onBeforeUnmount(() => {
         </label>
 
         <!-- Mobile Drawer Navigation -->
-        <ul
+        <div
           ref="mobileNavRef"
           class="m-nav"
           :class="{ 'show-m-nav': isMobileNavOpen }"
         >
-          <div class="m-nav-container">
+          <ul class="m-nav-container">
             <li
               class="m-lin a3maly_link_mobile"
               :class="{ trans: isMobileNavOpen }"
               @click="toggleMobileDropdown"
             >
-              <a
+              <button
+                type="button"
                 class="m_links a3maly_mobile"
                 :class="{ active_a3maly_mobile: isMobileDropdownOpen }"
+                :aria-expanded="isMobileDropdownOpen"
               >
                 أعمالي
-              </a>
+              </button>
               <div
                 class="dropdown-menu_mobile"
                 :class="{ active: isMobileDropdownOpen }"
@@ -259,8 +261,8 @@ onBeforeUnmount(() => {
                 المدونة
               </NuxtLink>
             </li>
-          </div>
-        </ul>
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -713,6 +715,7 @@ onBeforeUnmount(() => {
 
 .m-nav-container {
   padding-top: 8px;
+  list-style: none;
   z-index: 555 !important;
 }
 
@@ -749,6 +752,8 @@ onBeforeUnmount(() => {
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  font-family: inherit;
+  line-height: inherit;
   font-weight: 800;
   font-size: 20px;
   cursor: pointer;

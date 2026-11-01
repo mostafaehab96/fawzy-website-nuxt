@@ -131,7 +131,7 @@ onBeforeUnmount(() => {
     <div class="all_video_box_video_slider">
       <div
         class="carousel_video_slider"
-        aria-live="polite"
+        role="region"
         aria-label="Video Carousel"
       >
         <div
