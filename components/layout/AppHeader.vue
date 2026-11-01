@@ -26,7 +26,9 @@ const mobileNavRef = ref<HTMLElement | null>(null)
 const burgerLabelRef = ref<HTMLElement | null>(null)
 const floatingMenuRef = ref<HTMLElement | null>(null)
 
-const isVideosPage = computed(() => route.path === '/videos')
+const isVideosPage = computed(
+  () => route.path === '/videos' || route.path === '/videos/'
+)
 
 function closeMobileNav() {
   isMobileNavOpen.value = false

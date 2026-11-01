@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       routes: ['/', '/videos', '/blog'],
+      autoSubfolderIndex: false,
     },
   },
 
